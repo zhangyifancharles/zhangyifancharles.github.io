@@ -1,5 +1,14 @@
 # Website decisions
 
+## 2026-10-23 — GitHub username and Pages address migration
+
+- The owner personally changed the GitHub username to `zhangyifancharles` and confirmed completion.
+- Rename the existing website repository to `zhangyifancharles/zhangyifancharles.github.io`, preserving repository ID `1431075826` and its commit history.
+- Use `https://zhangyifancharles.github.io/` as the canonical homepage and `https://github.com/zhangyifancharles/zhangyifancharles.github.io.git` as the Git remote.
+- The deployment configuration derives the site origin and root base from `GITHUB_REPOSITORY`; no application code change or `SITE_URL` override is needed. Publishing this documentation update triggers a build for the renamed repository.
+- Preserve earlier deployment addresses below as historical records. Keep the existing English desktop layout and portrait.
+- No tests or browser validation were run, per the owner's instruction. The required static build and Pages deployment run through GitHub Actions; deployment completion is reported separately after Actions finishes.
+
 ## 2026-10-23 — Owner-supplied portrait
 
 - The owner supplied a personal photograph and requested a suitable placement on the existing website.
