@@ -1,0 +1,21 @@
+---
+import profile from '../data/profile.json';
+import { href } from '../lib/links';
+const path = Astro.url.pathname;
+const isAbout = path === href() || path.startsWith(href('about/'));
+const isBlog = path.startsWith(href('writing/'));
+const isProject = path.startsWith(href('projects/'));
+---
+<header class="site-header">
+  <a class="site-name" href={href()}>{profile.displayName}</a>
+  <nav class="primary-nav" aria-label="Main navigation">
+    <a href={href()} aria-current={isAbout ? 'page' : undefined}>About</a>
+    <a href={href('writing/')} aria-current={isBlog ? 'page' : undefined}>Blog</a>
+    <a href={href('projects/')} aria-current={isProject ? 'page' : undefined}>Project</a>
+  </nav>
+  <nav class="social-nav" aria-label="Contact and social links">
+    {profile.email && <a href={`mailto:${profile.email}`}>Email</a>}
+    {profile.github && <a href={profile.github} rel="me">GitHub</a>}
+    {profile.otherLinks.map((link: { label: string; url: string }) => <a href={link.url} rel="me">{link.label}</a>)}
+  </nav>
+</header>

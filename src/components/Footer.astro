@@ -1,0 +1,10 @@
+---
+import { href } from '../lib/links';
+interface Props { hasWriting: boolean; }
+const { hasWriting } = Astro.props;
+const isHome = Astro.url.pathname === href();
+---
+{(!isHome || hasWriting) && <footer class="site-footer shell">
+  {!isHome && <a href={href()}>Home</a>}
+  {hasWriting && <a href={href('rss.xml')}>RSS</a>}
+</footer>}

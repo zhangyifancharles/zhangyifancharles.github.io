@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { href } from '../lib/links';
+interface Props { entry: CollectionEntry<'projects'>; index?: number; }
+const { entry } = Astro.props;
+const data = entry.data;
+---
+<article class="project-row">
+  <h3><a href={href(`projects/${data.slug}/`)}>{data.title}</a>{data.demo && <span class="demo-tag">Sample</span>}</h3>
+  <p>{data.summary}</p>
+</article>

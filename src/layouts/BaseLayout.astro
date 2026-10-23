@@ -1,0 +1,45 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import profile from '../data/profile.json';
+import { getArticles, isPreview } from '../lib/content';
+import { href } from '../lib/links';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; lang?: string; noindex?: boolean; article?: boolean; date?: Date; }
+const { title, description = profile.description, lang = 'en', noindex = false, article = false, date } = Astro.props;
+const articles = await getArticles();
+const pageTitle = title ? `${title} · ${profile.readyToPublish ? profile.displayName : profile.siteName}` : profile.displayName;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImage = new URL(href('images/social-card.png'), Astro.site ?? Astro.url);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href={href('favicon.svg')} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex || isPreview || !profile.readyToPublish ? 'noindex, nofollow' : 'index, follow'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Notes & things — Writing, exploring, and making" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {date && <meta property="article:published_time" content={date.toISOString()} />}
+    {articles.length > 0 && <link rel="alternate" type="application/rss+xml" title={`${profile.siteName} RSS`} href={href('rss.xml')} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main" tabindex="-1"><slot /></main>
+    <Footer hasWriting={articles.length > 0} />
+  </body>
+</html>

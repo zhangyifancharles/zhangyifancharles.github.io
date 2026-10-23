@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { isoDate } from '../lib/content';
+import { href } from '../lib/links';
+interface Props { entry: CollectionEntry<'writing'>; index?: number; }
+const { entry } = Astro.props;
+const data = entry.data;
+---
+<article class="article-row" data-kind={data.kind}>
+  <time datetime={isoDate(data.date)}>{isoDate(data.date)}</time>
+  <h3><a href={href(`writing/${data.slug}/`)}>{data.title}</a>{data.demo && <span class="demo-tag">Sample</span>}</h3>
+</article>

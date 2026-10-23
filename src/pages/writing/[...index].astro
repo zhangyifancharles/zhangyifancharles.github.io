@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleRow from '../../components/ArticleRow.astro';
+import { getArticles } from '../../lib/content';
+export function getStaticPaths() { return [{ params: { index: undefined } }]; }
+const articles = await getArticles();
+const categories = [
+  { kind: 'technical', label: 'Research & technical' },
+  { kind: 'essay', label: 'Notes & essays' },
+].filter(({ kind }) => articles.some((entry) => entry.data.kind === kind));
+---
+<BaseLayout title="Blog" description="Articles and notes.">
+  <section class="shell blog-layout" aria-labelledby="blog-title">
+    <h1 id="blog-title" class="visually-hidden">Blog</h1>
+    {articles.length > 0 ? <>
+      <aside class="blog-categories" aria-label="Topics in this blog">
+        {categories.map(({ label }) => <span>{label}</span>)}
+      </aside>
+      <div class="article-list">{articles.map((entry) => <ArticleRow entry={entry}/>)}</div>
+    </> : <p>No posts yet.</p>}
+  </section>
+</BaseLayout>

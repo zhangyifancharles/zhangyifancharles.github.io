@@ -1,0 +1,24 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import Icon from '../../components/Icon.astro';
+import { getArticles, formatDate, category, isoDate } from '../../lib/content';
+import { href } from '../../lib/links';
+import 'katex/dist/katex.min.css';
+export async function getStaticPaths() {
+  return (await getArticles()).map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'writing'>; }
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const data = entry.data;
+---
+<BaseLayout title={data.title} description={data.summary} lang={data.lang} article date={data.date}>
+  <div class:list={['article-shell', 'shell', { 'essay-layout': data.kind === 'essay' }]}>
+    <header class="article-header"><a class="back-link" href={href('writing/')}><Icon name="back" size={16}/>Back to blog</a><div class="article-meta"><span class:list={['category', data.kind]}>{category(data.kind)}</span><span class="meta-dot">·</span><time datetime={isoDate(data.date)}>{formatDate(data.date)}</time>{data.demo && <span class="demo-tag">Sample</span>}</div><h1>{data.title}</h1>{data.kind === 'technical' && <p class="article-summary">{data.summary}</p>}{data.updated && <p class="updated">Updated {formatDate(data.updated)}</p>}</header>
+    <div class="article-grid"><article class="prose article-content" lang={data.lang}>{data.cover && <img src={href(data.cover)} alt={data.coverAlt} width="1440" height="840" class="article-cover" decoding="async"/>}<Content/></article>{data.kind === 'technical' && <TableOfContents headings={headings}/>}</div>
+    <div class="article-end"><span>A thought to return to.</span><a class="text-link" href={href('writing/')}>More posts<Icon name="arrow" size={17}/></a></div>
+  </div>
+</BaseLayout>

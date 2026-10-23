@@ -1,0 +1,17 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { getProjects } from '../../lib/content';
+import { href } from '../../lib/links';
+import 'katex/dist/katex.min.css';
+export async function getStaticPaths() { return (await getProjects()).map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } })); }
+interface Props { entry: CollectionEntry<'projects'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+<BaseLayout title={data.title} description={data.summary}>
+  <div class="article-shell shell project-detail"><header class="article-header"><a class="back-link" href={href('projects/')}><Icon name="back" size={16}/>Back to projects</a><div class="article-meta"><span class:list={['project-state', data.state]}><span></span>{data.state === 'in-progress' ? 'In progress' : 'Completed'}</span>{data.demo && <span class="demo-tag">Sample</span>}</div><h1>{data.title}</h1><p class="article-summary">{data.summary}</p><div class="project-facts"><div><span>Role</span><strong>{data.role}</strong></div><div><span>Focus</span><strong>{data.tags.join(' / ') || '—'}</strong></div></div><div class="project-outlinks">{data.code && <a class="text-link" href={data.code}>View code<Icon name="external" size={16}/></a>}{data.demoUrl && <a class="text-link" href={data.demoUrl}>View demo<Icon name="external" size={16}/></a>}</div></header><article class="prose article-content"><Content/></article><div class="article-end"><span>Another way of thinking things through.</span><a class="text-link" href={href('projects/')}>More projects<Icon name="arrow" size={17}/></a></div></div>
+</BaseLayout>

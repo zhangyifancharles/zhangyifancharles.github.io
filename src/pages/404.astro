@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { href } from '../lib/links';
+---
+<BaseLayout title="Page not found" noindex>
+  <section class="shell page-content">
+    <h1>Page not found</h1>
+    <p>The page you requested does not exist.</p>
+    <p><a href={href()}>Back to home</a></p>
+  </section>
+</BaseLayout>

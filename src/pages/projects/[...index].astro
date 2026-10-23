@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
+import { getProjects } from '../../lib/content';
+export function getStaticPaths() { return [{ params: { index: undefined } }]; }
+const projects = await getProjects();
+---
+<BaseLayout title="Projects" description="Projects and work in progress.">
+  <section class="shell page-content" aria-labelledby="projects-title">
+    <h1 id="projects-title">Projects</h1>
+    {projects.length > 0 ? <div class="project-list">{projects.map((entry) => <ProjectRow entry={entry}/>)}</div> : <p>No projects yet.</p>}
+  </section>
+</BaseLayout>

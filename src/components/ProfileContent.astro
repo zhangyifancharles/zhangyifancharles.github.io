@@ -1,0 +1,32 @@
+---
+import profile from '../data/profile.json';
+import { getArticles, getProjects } from '../lib/content';
+import { href } from '../lib/links';
+const [articles, projects] = await Promise.all([getArticles(), getProjects()]);
+const hasContact = Boolean(profile.email || profile.github || profile.otherLinks.length);
+---
+<article class="shell profile-content" aria-labelledby="profile-greeting">
+  <h1 id="profile-greeting">hi! i'm {profile.displayName}.</h1>
+  <p>{profile.introduction}</p>
+  {profile.currentFocus && <p>{profile.currentFocus}</p>}
+  {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+  {profile.beliefs.length > 0 && <>
+    <p>here are some things i believe in:</p>
+    <ul class="beliefs-list">{profile.beliefs.map((belief) => <li>{belief}</li>)}</ul>
+  </>}
+  {profile.interests.length > 0 && <>
+    <p>here are some things i like:</p>
+    <ul>{profile.interests.map((interest) => <li>{interest}</li>)}</ul>
+  </>}
+  {(articles.length > 0 || projects.length > 0) && <p>
+    You can find {articles.length > 0 && <a href={href('writing/')}>my blog</a>}{articles.length > 0 && projects.length > 0 && ' and '}{projects.length > 0 && <a href={href('projects/')}>my projects</a>} here.
+  </p>}
+  {profile.resume && <p><a href={href(profile.resume)}>My CV</a> is also available.</p>}
+  {hasContact && <p id="contact">
+    Get in touch: <span class="inline-links">
+      {profile.email && <a href={`mailto:${profile.email}`}>email</a>}
+      {profile.github && <a href={profile.github} rel="me">GitHub</a>}
+      {profile.otherLinks.map((link: { label: string; url: string }) => <a href={link.url} rel="me">{link.label}</a>)}
+    </span>.
+  </p>}
+</article>
