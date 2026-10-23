@@ -14,7 +14,7 @@ const hasContact = Boolean(profile.email || profile.github || profile.otherLinks
     height="800"
     decoding="async"
   />}
-  <h1 id="profile-greeting">hi! i'm {profile.displayName}.</h1>
+  <h1 id="profile-greeting">{profile.greeting}</h1>
   <p>{profile.introduction}</p>
   {profile.currentFocus && <p>{profile.currentFocus}</p>}
   {profile.about.map((paragraph) => <p>{paragraph}</p>)}
@@ -23,7 +23,7 @@ const hasContact = Boolean(profile.email || profile.github || profile.otherLinks
     <ul class="beliefs-list">{profile.beliefs.map((belief) => <li>{belief}</li>)}</ul>
   </>}
   {profile.interests.length > 0 && <>
-    <p>here are some things i like:</p>
+    <p>Here's what I'm curious about right now:</p>
     <ul>{profile.interests.map((interest) => <li>{interest}</li>)}</ul>
   </>}
   {(articles.length > 0 || projects.length > 0) && <p>

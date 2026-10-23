@@ -2,16 +2,23 @@
   "readyToPublish": true,
   "displayName": "ZHANG Yifan Charles",
   "siteName": "ZHANG Yifan Charles",
-  "description": "Blog and projects.",
+  "description": "ZHANG Yifan Charles — exploring society and LLM-based social simulation.",
   "headline": [],
-  "introduction": "A personal website for notes and projects.",
+  "introduction": "So nice to meet you here!",
   "currentFocus": "",
-  "about": [],
+  "about": [
+    "I'm currently an undergraduate at the School of International Liberal Studies, Waseda University, and the School of International Studies, Peking University.",
+    "My aim is to explore the mechanisms that shape our society.",
+    "I believe real, interesting problems and ideas matter. Problems should never be confined by disciplinary boundaries."
+  ],
   "email": "",
   "github": "",
   "otherLinks": [],
   "resume": "",
   "beliefs": [],
-  "interests": [],
-  "portrait": "images/zhang-yifan-charles.jpg"
+  "interests": [
+    "Social simulation using large language models (LLMs)."
+  ],
+  "portrait": "images/zhang-yifan-charles.jpg",
+  "greeting": "hi! i'm yifan charles!"
 }
