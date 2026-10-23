@@ -56,8 +56,16 @@ svg { max-width: 100%; }
 .site-name { justify-self: start; font-size: 18px; }
 .primary-nav { display: flex; justify-content: center; gap: 42px; font-size: 16px; }
 .social-nav { justify-self: end; display: flex; gap: 20px; font-size: 14px; }
-.profile-content { display: flow-root; }
-.profile-portrait { float: right; width: 176px; height: 220px; margin: 0 0 24px 32px; object-fit: cover; filter: none; }
+.profile-content { position: relative; }
+.profile-portrait {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 32px);
+  width: 144px;
+  height: 180px;
+  object-fit: cover;
+  filter: none;
+}
 .profile-content h1 { font-size: inherit; font-weight: 400; line-height: inherit; margin: 0 0 17px; }
 .profile-content p { margin: 0 0 17px; }
 .profile-content ul { margin: 0 0 17px; padding-left: 22px; }

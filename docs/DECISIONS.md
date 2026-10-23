@@ -1,5 +1,12 @@
 # Website decisions
 
+## 2026-10-24 — Portrait placement beside the reading column
+
+- Move the portrait out of the text flow and place it just outside the right edge of the 650px reading column, aligned with the greeting.
+- Reduce the displayed portrait to 144 × 180px so it supports the introduction without narrowing or interrupting the paragraphs.
+- Preserve the owner-supplied crop, natural color, plain rectangular treatment, monochrome page, and desktop-only scope.
+- No test suite or browser validation is required; the existing GitHub Pages workflow performs the static deployment build.
+
 ## 2026-10-23 — GitHub username and Pages address migration
 
 - The owner personally changed the GitHub username to `zhangyifancharles` and confirmed completion.
