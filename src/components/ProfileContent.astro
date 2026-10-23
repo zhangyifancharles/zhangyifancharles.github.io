@@ -6,6 +6,14 @@ const [articles, projects] = await Promise.all([getArticles(), getProjects()]);
 const hasContact = Boolean(profile.email || profile.github || profile.otherLinks.length);
 ---
 <article class="shell profile-content" aria-labelledby="profile-greeting">
+  {profile.portrait && <img
+    class="profile-portrait"
+    src={href(profile.portrait)}
+    alt={`Portrait of ${profile.displayName}`}
+    width="640"
+    height="800"
+    decoding="async"
+  />}
   <h1 id="profile-greeting">hi! i'm {profile.displayName}.</h1>
   <p>{profile.introduction}</p>
   {profile.currentFocus && <p>{profile.currentFocus}</p>}

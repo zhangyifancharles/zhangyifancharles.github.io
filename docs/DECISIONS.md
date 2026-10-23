@@ -1,5 +1,12 @@
 # Website decisions
 
+## 2026-10-23 — Owner-supplied portrait
+
+- The owner supplied a personal photograph and requested a suitable placement on the existing website.
+- Display a 176 × 220px rectangular portrait at the right of the introduction, using the shared homepage/About component. Keep the 650px reading column, plain typography, and white background with black text. Retain natural color in the photo without borders, shadows, or decorative framing.
+- Store only a cropped, compressed 640 × 800 JPEG in `public/images/zhang-yifan-charles.jpg`; preserve the supplied original outside the repository and strip camera metadata from the published derivative. Configure the asset path through `portrait` in the profile data, and use the existing base-aware URL helper and English alt text.
+- Publish through the existing GitHub Actions workflow. No test suite, Astro check, output checker, or browser validation was run, per the owner's continuing instruction; the workflow performs the static build required for deployment.
+
 ## 2026-10-23 — GitHub Pages deployment completed
 
 - The owner explicitly requested GitHub deployment and completed GitHub authorization for CharlesZhang-06.
