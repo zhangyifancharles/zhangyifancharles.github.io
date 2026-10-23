@@ -1,5 +1,14 @@
 # Website decisions
 
+## 2026-10-23 — GitHub Pages deployment completed
+
+- The owner explicitly requested GitHub deployment and completed GitHub authorization for CharlesZhang-06.
+- The personal-site repository did not exist, so create the public repository `CharlesZhang-06/CharlesZhang-06.github.io` without replacing existing remote content.
+- Publish at https://charleszhang-06.github.io/ with GitHub Actions as the Pages source. Pushes to `main` rebuild and deploy automatically.
+- Initial source commit: `1227c6e28de5c8a660ca0f946ff4cc7fb846ffc2`. Deployment run: https://github.com/CharlesZhang-06/CharlesZhang-06.github.io/actions/runs/39960711561. Both the build and deploy jobs completed successfully, and the Pages API reported `built`.
+- The required local static build and remote deployment build succeeded. No test suite, Astro check, output checker, or browser validation was run, per the owner's instruction.
+- Preserve the English monochrome desktop design. Development samples are excluded from production; Blog and Project remain empty until real content is supplied.
+
 ## 2026-10-23 — GitHub Pages publication preparation
 
 The owner supplied the name ZHANG Yifan Charles and explicitly requested deployment to GitHub.
