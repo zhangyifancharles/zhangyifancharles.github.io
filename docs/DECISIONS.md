@@ -1,5 +1,11 @@
 # Website decisions
 
+## 2026-10-24 — Current research interests
+
+- Replace the single research-interest item with four owner-supplied areas: LLM-based social simulation; AI alignment and global governance; emotions in politics; and understanding risk.
+- Describe political behavior psychology, public space, and social capital as examples within LLM-based social simulation.
+- Lightly edit capitalization, punctuation, and spelling for clear English, including correcting `allignment` to `alignment`.
+
 ## 2026-10-24 — Portrait placement beside the reading column
 
 - Move the portrait out of the text flow and place it just outside the right edge of the 650px reading column, aligned with the greeting.
