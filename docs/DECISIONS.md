@@ -1,5 +1,10 @@
 # Website decisions
 
+## 2026-10-24 — Finalized research-interest list
+
+- Publish the owner's final five research interests: machine behavior and LLM-based social simulation; political behavior and political emotions; AI alignment and global governance; risk perception and decision-making; and urban studies.
+- Keep the existing unnumbered list presentation so the homepage remains simple and readable.
+
 ## 2026-10-24 — Refined research-interest wording
 
 - Use the approved first wording direction for the four research interests.
