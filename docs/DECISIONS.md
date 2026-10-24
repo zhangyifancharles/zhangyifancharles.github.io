@@ -1,5 +1,11 @@
 # Website decisions
 
+## 2026-10-24 — Refined research-interest wording
+
+- Use the approved first wording direction for the four research interests.
+- Refine the list to: LLM-based social simulation, including political psychology, public space, and social capital; AI alignment and global governance; political emotions; and risk perception and decision-making.
+- Do not include collective behavior in the published list.
+
 ## 2026-10-24 — Current research interests
 
 - Replace the single research-interest item with four owner-supplied areas: LLM-based social simulation; AI alignment and global governance; emotions in politics; and understanding risk.
